@@ -1,4 +1,5 @@
 const app = require("./app");
+const connectDatabase = require("./db/Database");
 
 
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   });
 }
 
+connectDatabase()
 
 // create server
 const server = app.listen(process.env.PORT, () => {
