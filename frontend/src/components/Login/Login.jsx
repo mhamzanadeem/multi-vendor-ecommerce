@@ -3,6 +3,7 @@ import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { React, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,15 +29,16 @@ function Login() {
       );
       console.log("Login: response received", res.status, res.data);
       if (res.data.success) {
+        toast.success("Login Success");
         console.log("Login: success, navigating to /");
         navigate("/");
       }
     } catch (err) {
       console.error("Login: error", err);
       console.error("Login: error response", err.response?.status, err.response?.data);
-      setError(
-        err.response?.data?.message || "Something went wrong. Please try again."
-      );
+      const message = err.response?.data?.message || "Something went wrong. Please try again.";
+      toast.error(message);
+      setError(message);
     } finally {
       setLoading(false);
     }
