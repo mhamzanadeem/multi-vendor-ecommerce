@@ -1,7 +1,7 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 

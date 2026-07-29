@@ -7,7 +7,7 @@ import { loadUser } from "./redux/actions/user.js";
 
 const App = () => {
   useEffect(() => {
-    Store.dispatch(loadUser);
+    Store.dispatch(loadUser());
   }, []);
   return (
     <div>
