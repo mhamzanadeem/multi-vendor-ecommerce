@@ -17,16 +17,23 @@ function Login() {
     setError("");
     setLoading(true);
 
+    const url = `${import.meta.env.VITE_API_URL}/api/v2/user/login-user`;
+    console.log("Login: sending POST to", url);
+
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v2/user/login-user`,
+        url,
         { email, password },
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );
+      console.log("Login: response received", res.status, res.data);
       if (res.data.success) {
+        console.log("Login: success, navigating to /");
         navigate("/");
       }
     } catch (err) {
+      console.error("Login: error", err);
+      console.error("Login: error response", err.response?.status, err.response?.data);
       setError(
         err.response?.data?.message || "Something went wrong. Please try again."
       );
