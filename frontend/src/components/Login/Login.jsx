@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v2/user/login-user`,
+        `${import.meta.env.VITE_API_URL}/api/v2/user/login-user`,
         { email, password },
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );

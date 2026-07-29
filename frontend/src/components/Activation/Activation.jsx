@@ -12,7 +12,7 @@ function Activation() {
     const activateAccount = async () => {
       try {
         const res = await axios.post(
-          `http://localhost:8000/api/v2/user/activation`,
+          `${import.meta.env.VITE_API_URL}/api/v2/user/activation`,
           { activation_token: token },
           { headers: { "Content-Type": "application/json" } }
         );

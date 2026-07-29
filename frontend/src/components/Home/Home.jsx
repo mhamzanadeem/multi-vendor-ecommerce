@@ -11,7 +11,7 @@ function Home() {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v2/user/getuser`,
+          `${import.meta.env.VITE_API_URL}/api/v2/user/getuser`,
           { withCredentials: true }
         );
         setUser(res.data.user);
@@ -25,7 +25,7 @@ function Home() {
   }, [navigate]);
 
   const handleLogout = async () => {
-    await axios.get(`http://localhost:8000/api/v2/user/logout`, {
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/v2/user/logout`, {
       withCredentials: true,
     });
     navigate("/login");

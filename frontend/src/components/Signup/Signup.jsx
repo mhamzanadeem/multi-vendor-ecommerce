@@ -34,7 +34,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v2/user/create-user`,
+        `${import.meta.env.VITE_API_URL}/api/v2/user/create-user`,
         { name, email, password, avatar },
         { headers: { "Content-Type": "application/json" } }
       );
