@@ -7,10 +7,9 @@
   "type": "commonjs",
   "main": "eslint.config.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -29,11 +28,11 @@
     "js-cookie": "^3.0.8",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-hot-toast": "^2.6.0",
     "react-icons": "^5.7.0",
     "react-lottie": "^1.2.10",
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.18.2",
-    "react-scripts": "^5.0.1",
     "react-toastify": "^11.1.0",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
@@ -43,8 +42,11 @@
     "web-vitals": "^6.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@vitejs/plugin-react": "^4.5.0",
     "autoprefixer": "^10.5.4",
     "postcss": "^8.5.24",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "vite": "^6.3.0"
   }
 }
