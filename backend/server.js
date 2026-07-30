@@ -1,3 +1,10 @@
+// config - MUST be loaded before any other requires
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({
+    path: require("path").join(__dirname, "config", ".env"),
+  });
+}
+
 const app = require("./app");
 const connectDatabase = require("./db/Database");
 const cloudinary = require("cloudinary");
@@ -7,13 +14,6 @@ process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
   console.log(`shutting down the server for handling uncaught exception`);
 });
-
-// config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({
-    path: "config/.env",
-  });
-}
 
 // connect db
 connectDatabase();

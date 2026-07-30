@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { loadUser } from "../../redux/actions/user";
+import Store from "../../redux/store";
 
 function Login() {
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ function Login() {
       if (res.data.success) {
         toast.success("Login Success");
         console.log("Login: success, navigating to /");
+        Store.dispatch(loadUser());
         navigate("/");
       }
     } catch (err) {

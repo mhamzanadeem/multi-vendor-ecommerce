@@ -40,7 +40,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 1 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Profile
         </span>
@@ -53,7 +53,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 2 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Orders
         </span>
@@ -66,7 +66,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 3 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Refunds
         </span>
@@ -74,13 +74,13 @@ const ProfileSidebar = ({ setActive, active }) => {
 
       <div
         className="flex items-center cursor-pointer w-full mb-8"
-        onClick={() => setActive(4) || navigate("/inbox")}
+        onClick={() => setActive(4)}
       >
         <AiOutlineMessage size={20} color={active === 4 ? "red" : ""} />
         <span
           className={`pl-3 ${
             active === 4 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Inbox
         </span>
@@ -94,7 +94,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 5 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Track Order
         </span>
@@ -108,7 +108,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 6 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Change Password
         </span>
@@ -122,7 +122,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 7 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Address
         </span>
@@ -141,7 +141,7 @@ const ProfileSidebar = ({ setActive, active }) => {
             <span
               className={`pl-3 ${
                 active === 8 ? "text-[red]" : ""
-              } 800px:block hidden`}
+              } 800:block hidden`}
             >
               Admin Dashboard
             </span>
@@ -156,7 +156,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         <span
           className={`pl-3 ${
             active === 8 ? "text-[red]" : ""
-          } 800px:block hidden`}
+          } 800:block hidden`}
         >
           Log out
         </span>

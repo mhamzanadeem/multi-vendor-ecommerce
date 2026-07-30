@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import Header from "../components/Layout/Header";
-import Loader from "../components/Layout/Loader";
-import ProductCard from "../components/Route/ProductCard/ProductCard";
-import styles from "../styles/styles";
-import Footer from "../components/Layout/Footer";
+import Header from "../../components/Layout/Header";
+import Loader from "../../components/Layout/Loader";
+import ProductCard from "../../components/Route/ProductCard/ProductCard";
+import styles from "../../styles/styles";
+import Footer from "../../components/Layout/Footer";
+import { getAllProducts } from "../../redux/actions/product";
 
 const BestSellingPage = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
   const {allProducts,isLoading} = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   useEffect(() => {
     const allProductsData = allProducts ? [...allProducts] : [];

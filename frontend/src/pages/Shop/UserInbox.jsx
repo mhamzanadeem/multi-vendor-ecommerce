@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../components/Layout/Header";
+import Header from "../../components/Layout/Header";
 import { useSelector } from "react-redux";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
-import { server } from "../server";
+import { server } from "../../server";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
-import styles from "../styles/styles";
-const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
+import styles from "../../styles/styles";
+const ENDPOINT = "http://localhost:4000";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
-const UserInbox = () => {
+const UserInbox = ({ showHeader = true }) => {
   const { user,loading } = useSelector((state) => state.user);
   const [conversations, setConversations] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
@@ -211,7 +211,7 @@ const UserInbox = () => {
     <div className="w-full">
       {!open && (
         <>
-          <Header />
+          {showHeader && <Header />}
           <h1 className="text-center text-[30px] py-3 font-Poppins">
             All Messages
           </h1>
