@@ -2,12 +2,6 @@ const express = require("express");
 const User = require("../model/user");
 const router = express.Router();
 const cloudinary = require("cloudinary");
-
-cloudinary.v2.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const jwt = require("jsonwebtoken");
@@ -25,88 +19,29 @@ router.post("/create-user", async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    let avatarData = {};
-
-    if (avatar) {
-      const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-        folder: "avatars",
-      });
-      avatarData = {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      };
-    }
+    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+      folder: "avatars",
+    });
 
     const user = {
       name: name,
       email: email,
       password: password,
-      avatar: avatarData,
+      avatar: {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      },
     };
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `${process.env.CLIENT_URL}/activation/${activationToken}`;
+    const activationUrl = `https://eshop-tutorial-pyri.vercel.app/activation/${activationToken}`;
 
     try {
-      const emailHtml = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-</head>
-<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,Helvetica,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4;padding:20px 0;">
-    <tr>
-      <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-          <!-- Header -->
-          <tr>
-            <td style="background:linear-gradient(135deg,#667eea,#764ba2);padding:30px 40px;text-align:center;">
-              <h1 style="margin:0;font-size:28px;color:#ffffff;letter-spacing:2px;">🛍️ Shoppy</h1>
-              <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;">Your One-Stop Shop</p>
-            </td>
-          </tr>
-          <!-- Body -->
-          <tr>
-            <td style="padding:40px;">
-              <h2 style="margin:0 0 6px;color:#333;font-size:22px;">Welcome, ${user.name}!</h2>
-              <p style="margin:0 0 20px;color:#666;font-size:15px;line-height:1.6;">
-                Thanks for joining <strong>Shoppy</strong>. Please click the button below to activate your account and get started.
-              </p>
-              <!-- Button -->
-              <table cellpadding="0" cellspacing="0" style="margin:0 auto 24px;">
-                <tr>
-                  <td align="center" style="background:linear-gradient(135deg,#667eea,#764ba2);border-radius:6px;">
-                    <a href="${activationUrl}" target="_blank" style="display:inline-block;padding:14px 36px;font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;">Activate Account</a>
-                  </td>
-                </tr>
-              </table>
-              <p style="margin:0 0 6px;color:#999;font-size:13px;line-height:1.5;">
-                Or copy and paste this link into your browser:
-              </p>
-              <p style="margin:0;color:#667eea;font-size:12px;word-break:break-all;">${activationUrl}</p>
-            </td>
-          </tr>
-          <!-- Footer -->
-          <tr>
-            <td style="background-color:#f9f9f9;padding:20px 40px;text-align:center;border-top:1px solid #eee;">
-              <p style="margin:0 0 4px;color:#999;font-size:12px;">&copy; 2026 Shoppy. All rights reserved.</p>
-              <p style="margin:0;color:#bbb;font-size:11px;">This email was sent to ${user.email}</p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>`;
-
       await sendMail({
         email: user.email,
-        subject: "Activate your Shoppy account",
-        message: `Hello ${user.name}, please click the link to activate your account: ${activationUrl}`,
-        html: emailHtml,
+        subject: "Activate your account",
+        message: `Hello ${user.name}, please click on the link to activate your account: ${activationUrl}`,
       });
       res.status(201).json({
         success: true,
