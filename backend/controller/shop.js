@@ -15,11 +15,15 @@ router.post("/create-shop", catchAsyncErrors(async (req, res, next) => {
     const { email, avatar, name, password, address, phoneNumber, zipCode } = req.body;
 
     if (!name || !email || !password || !avatar || !address || !phoneNumber || !zipCode) {
+      console.error("[DEBUG] create-shop validation failed:", {
+        name, email, password, avatar: avatar ? avatar.slice(0, 50) : avatar, address, phoneNumber, zipCode,
+      });
       return next(new ErrorHandler("Please fill in all fields and upload a shop avatar", 400));
     }
 
     const sellerEmail = await Shop.findOne({ email });
     if (sellerEmail) {
+      console.error("[DEBUG] create-shop duplicate email:", email);
       return next(new ErrorHandler("User already exists", 400));
     }
 
@@ -42,6 +46,7 @@ router.post("/create-shop", catchAsyncErrors(async (req, res, next) => {
 
     sendShopToken(seller, 201, res);
   } catch (error) {
+    console.error("[DEBUG] create-shop threw:", error);
     return next(new ErrorHandler(error.message, 400));
   }
 }));
