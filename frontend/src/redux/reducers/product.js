@@ -1,9 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { productData } from "../../static/data";
 
 const initialState = {
   isLoading: false,
-  allProducts: productData,
+  allProducts: [],
 };
 
 export const productReducer = createReducer(initialState, (builder) => {
