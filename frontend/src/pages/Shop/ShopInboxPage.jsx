@@ -1,7 +1,7 @@
 import React from 'react'
 import DashboardHeader from '../../components/Shop/Layout/DashboardHeader'
 import DashboardSideBar from '../../components/Shop/Layout/DashboardSideBar'
-import DashboardMessages from "../../components/Shop/DashboardMessages";
+import DashboardMessage from "../../components/Shop/DashboardMessage";
 
 const ShopInboxPage = () => {
   return (
@@ -11,7 +11,7 @@ const ShopInboxPage = () => {
       <div className="w-[80px] 800:w-[330px]">
         <DashboardSideBar active={8} />
       </div>
-       <DashboardMessages />
+       <DashboardMessage />
     </div>
   </div>
   )

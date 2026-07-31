@@ -15,13 +15,31 @@ import {
   ShopCreatePage,
 } from "./Routes.js";
 import Store from "./redux/store.js";
-import { loadUser } from "./redux/actions/user.js";
+import { loadUser, loadSeller } from "./redux/actions/user.js";
 import { getAllProducts } from "./redux/actions/product.js";
 import { pingKeepAliveTargets } from "./utils/keepAlive.js";
+import SellerProtectedRoute from "./routes/SellerProtectedRoute.jsx";
+import ShopDashboardPage from "./pages/Shop/ShopDashboardPage";
+import ShopLoginPage from "./pages/Shop/ShopLoginPage";
+import ShopAllOrders from "./pages/Shop/ShopAllOrders";
+import ShopAllProducts from "./pages/Shop/ShopAllProducts";
+import ShopCreateProduct from "./pages/Shop/ShopCreateProduct";
+import ShopAllEvents from "./pages/Shop/ShopAllEvents";
+import ShopCreateEvents from "./pages/Shop/ShopCreateEvents";
+import ShopWithDrawMoneyPage from "./pages/Shop/ShopWithDrawMoneyPage";
+import ShopInboxPage from "./pages/Shop/ShopInboxPage";
+import ShopAllCoupons from "./pages/Shop/ShopAllCoupons";
+import ShopAllRefunds from "./pages/Shop/ShopAllRefunds";
+import ShopSettingsPage from "./pages/Shop/ShopSettingsPage";
+import ShopOrderDetails from "./pages/Shop/ShopOrderDetails";
+import ShopHomePage from "./pages/Shop/ShopHomePage";
+import ShopPreviewPage from "./pages/Shop/ShopPreviewPage";
+import SellerActivationPage from "./pages/Shop/SellerActivationPage";
 
 const App = () => {
   useEffect(() => {
     Store.dispatch(loadUser());
+    Store.dispatch(loadSeller());
     Store.dispatch(getAllProducts());
   }, []);
 
@@ -47,6 +65,10 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignupPage />} />
           <Route path="/activation/:token" element={<ActivationPage />} />
+          <Route
+            path="/seller/activation/:token"
+            element={<SellerActivationPage />}
+          />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/inbox" element={<UserInbox />} />
           <Route path="/best-selling" element={<BestSellingPage />} />
@@ -54,6 +76,106 @@ const App = () => {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/shop-create" element={<ShopCreatePage />} />
+          <Route path="/shop-login" element={<ShopLoginPage />} />
+          <Route path="/shop/:id" element={<ShopHomePage />} />
+          <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <SellerProtectedRoute>
+                <ShopDashboardPage />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-orders"
+            element={
+              <SellerProtectedRoute>
+                <ShopAllOrders />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-products"
+            element={
+              <SellerProtectedRoute>
+                <ShopAllProducts />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-create-product"
+            element={
+              <SellerProtectedRoute>
+                <ShopCreateProduct />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-events"
+            element={
+              <SellerProtectedRoute>
+                <ShopAllEvents />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-create-event"
+            element={
+              <SellerProtectedRoute>
+                <ShopCreateEvents />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-withdraw-money"
+            element={
+              <SellerProtectedRoute>
+                <ShopWithDrawMoneyPage />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-messages"
+            element={
+              <SellerProtectedRoute>
+                <ShopInboxPage />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-coupouns"
+            element={
+              <SellerProtectedRoute>
+                <ShopAllCoupons />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard-refunds"
+            element={
+              <SellerProtectedRoute>
+                <ShopAllRefunds />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <SellerProtectedRoute>
+                <ShopSettingsPage />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/order/:id"
+            element={
+              <SellerProtectedRoute>
+                <ShopOrderDetails />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>

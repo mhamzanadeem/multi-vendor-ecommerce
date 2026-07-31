@@ -110,13 +110,13 @@ export const updatUserAddress =
           user: data.user,
         },
       });
-    } catch (error) {
-      dispatch({
-        type: "updateUserAddressFailed",
-        payload: error.response?.data?.message,
-      });
-    }
-  };
+  } catch (error) {
+    dispatch({
+      type: "LoadSellerFail",
+      payload: error.response?.data?.message,
+    });
+  }
+};
 
 // delete user address
 export const deleteUserAddress = (id) => async (dispatch) => {
