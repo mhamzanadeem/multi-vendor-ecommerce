@@ -45,16 +45,35 @@ const ShopCreate = () => {
       });
   };
 
-  const handleFileInputChange = (e) => {
+const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
     const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatar(reader.result);
-      }
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const MAX = 200;
+        let { width, height } = img;
+        if (width > height) {
+          if (width > MAX) {
+            height *= MAX / width;
+            width = MAX;
+          }
+        } else if (height > MAX) {
+          width *= MAX / height;
+          height = MAX;
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        setAvatar(canvas.toDataURL("image/jpeg", 0.7));
+      };
+      img.src = event.target.result;
     };
-
-    reader.readAsDataURL(e.target.files[0]);
+    reader.readAsDataURL(file);
   };
 
   return (
