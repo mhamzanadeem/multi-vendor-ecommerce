@@ -75,7 +75,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
         <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-40 flex items-center justify-center">
           <div className="w-[90%] 800:w-[60%] h-[90vh] overflow-y-scroll 800:h-[75vh] bg-white rounded-md shadow-sm relative p-4">
             <RxCross1
-              size={30}
+              size={16}
               className="absolute right-3 top-3 z-50"
               onClick={() => setOpen(false)}
             />
@@ -144,7 +144,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   <div>
                     {click ? (
                       <AiFillHeart
-                        size={30}
+                        size={16}
                         className="cursor-pointer"
                         onClick={() => removeFromWishlistHandler(data)}
                         color={click ? "red" : "#333"}
@@ -152,7 +152,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       />
                     ) : (
                       <AiOutlineHeart
-                        size={30}
+                        size={16}
                         className="cursor-pointer"
                         onClick={() => addToWishlistHandler(data)}
                         title="Add to wishlist"

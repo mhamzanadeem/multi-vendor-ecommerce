@@ -24,31 +24,31 @@ const AdminHeader = () => {
           <Link to="/dashboard/cupouns" className="800:block hidden">
             <AiOutlineGift
               color="#555"
-              size={30}
+              size={16}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-events" className="800:block hidden">
             <MdOutlineLocalOffer
               color="#555"
-              size={30}
+              size={16}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-products" className="800:block hidden">
             <FiShoppingBag
               color="#555"
-              size={30}
+              size={16}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-orders" className="800:block hidden">
-            <FiPackage color="#555" size={30} className="mx-5 cursor-pointer" />
+            <FiPackage color="#555" size={16} className="mx-5 cursor-pointer" />
           </Link>
           <Link to="/dashboard-messages" className="800:block hidden">
             <BiMessageSquareDetail
               color="#555"
-              size={30}
+              size={16}
               className="mx-5 cursor-pointer"
             />
           </Link>

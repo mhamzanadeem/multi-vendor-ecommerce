@@ -44,17 +44,17 @@ const Footer = () => {
           <br />
           <p>The home and elements needeed to create beatiful products.</p>
           <div className="flex items-center mt-[15px]">
-            <AiFillFacebook size={25} className="cursor-pointer" />
+            <AiFillFacebook size={16} className="cursor-pointer" />
             <AiOutlineTwitter
-              size={25}
+              size={16}
               style={{ marginLeft: "15px", cursor: "pointer" }}
             />
             <AiFillInstagram
-              size={25}
+              size={16}
               style={{ marginLeft: "15px", cursor: "pointer" }}
             />
             <AiFillYoutube
-              size={25}
+              size={16}
               style={{ marginLeft: "15px", cursor: "pointer" }}
             />
           </div>

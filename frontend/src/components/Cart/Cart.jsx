@@ -32,7 +32,7 @@ const Cart = ({ setOpenCart }) => {
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
               <RxCross1
-                size={25}
+                size={16}
                 className="cursor-pointer"
                 onClick={() => setOpenCart(false)}
               />
@@ -44,14 +44,14 @@ const Cart = ({ setOpenCart }) => {
             <div>
               <div className="flex w-full justify-end pt-5 pr-5">
                 <RxCross1
-                  size={25}
+                  size={16}
                   className="cursor-pointer"
                   onClick={() => setOpenCart(false)}
                 />
               </div>
               {/* Item length */}
               <div className={`${styles.noramlFlex} p-4`}>
-                <IoBagHandleOutline size={25} />
+                <IoBagHandleOutline size={16} />
                 <h5 className="pl-2 text-[20px] font-[500]">
                   {cart && cart.length} items
                 </h5>
@@ -119,7 +119,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             className={`bg-[#e44343] border border-[#e4434373] rounded-full w-[25px] h-[25px] ${styles.noramlFlex} justify-center cursor-pointer`}
             onClick={() => increment(data)}
           >
-            <HiPlus size={18} color="#fff" />
+            <HiPlus size={16} color="#fff" />
           </div>
           <span className="pl-[10px]">{data.qty}</span>
           <div

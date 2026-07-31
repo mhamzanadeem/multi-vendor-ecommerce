@@ -61,7 +61,7 @@ const AllRefundOrders = () => {
           <>
             <Link to={`/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <AiOutlineArrowRight size={16} />
               </Button>
             </Link>
           </>

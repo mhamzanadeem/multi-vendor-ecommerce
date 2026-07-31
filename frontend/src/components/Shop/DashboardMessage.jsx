@@ -351,7 +351,7 @@ const SellerInbox = ({
           </div>
         </div>
         <AiOutlineArrowRight
-          size={20}
+          size={16}
           className="cursor-pointer"
           onClick={() => setOpen(false)}
         />
@@ -416,7 +416,7 @@ const SellerInbox = ({
             onChange={handleImageUpload}
           />
           <label htmlFor="image">
-            <TfiGallery className="cursor-pointer" size={20} />
+            <TfiGallery className="cursor-pointer" size={16} />
           </label>
         </div>
         <div className="w-full">
@@ -431,7 +431,7 @@ const SellerInbox = ({
           <input type="submit" value="Send" className="hidden" id="send" />
           <label htmlFor="send">
             <AiOutlineSend
-              size={20}
+              size={16}
               className="absolute right-4 top-5 cursor-pointer"
             />
           </label>

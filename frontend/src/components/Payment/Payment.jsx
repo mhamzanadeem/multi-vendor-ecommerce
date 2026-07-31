@@ -351,7 +351,7 @@ const PaymentInfo = ({
                 <div className="w-full 800:w-[40%] h-screen 800:h-[80vh] bg-white rounded-[5px] shadow flex flex-col justify-center p-8 relative overflow-y-scroll">
                   <div className="w-full flex justify-end p-3">
                     <RxCross1
-                      size={30}
+                      size={16}
                       className="cursor-pointer absolute top-3 right-3"
                       onClick={() => setOpen(false)}
                     />

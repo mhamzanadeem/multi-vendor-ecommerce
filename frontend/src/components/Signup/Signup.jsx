@@ -138,13 +138,13 @@ function Signup() {
                   {visible ? (
                     <AiOutlineEye
                       className="absolute right-2 top-2 cursor-pointer"
-                      size={25}
+                      size={16}
                       onClick={() => setVisible(false)}
                     />
                   ) : (
                     <AiOutlineEyeInvisible
                       className="absolute right-2 top-2 cursor-pointer"
-                      size={25}
+                      size={16}
                       onClick={() => setVisible(true)}
                     />
                   )}

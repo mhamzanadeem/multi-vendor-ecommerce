@@ -64,7 +64,7 @@ const DashboardHero = () => {
           <>
             <Link to={`/dashboard/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <AiOutlineArrowRight size={16} />
               </Button>
             </Link>
           </>
@@ -90,7 +90,7 @@ const DashboardHero = () => {
         <div className="w-full mb-4 800:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
             <AiOutlineMoneyCollect
-              size={30}
+              size={16}
               className="mr-2"
               fill="#00000085"
             />
@@ -109,7 +109,7 @@ const DashboardHero = () => {
 
         <div className="w-full mb-4 800:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
-            <MdBorderClear size={30} className="mr-2" fill="#00000085" />
+            <MdBorderClear size={16} className="mr-2" fill="#00000085" />
             <h3
               className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
             >
@@ -125,7 +125,7 @@ const DashboardHero = () => {
         <div className="w-full mb-4 800:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
             <AiOutlineMoneyCollect
-              size={30}
+              size={16}
               className="mr-2"
               fill="#00000085"
             />

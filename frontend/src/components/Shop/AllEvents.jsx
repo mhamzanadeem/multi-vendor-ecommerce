@@ -67,7 +67,7 @@ const AllEvents = () => {
           <>
             <Link to={`/product/${product_name}`}>
               <Button>
-                <AiOutlineEye size={20} />
+                <AiOutlineEye size={16} />
               </Button>
             </Link>
           </>
@@ -87,7 +87,7 @@ const AllEvents = () => {
             <Button
             onClick={() => handleDelete(params.id)}
             >
-              <AiOutlineDelete size={20} />
+              <AiOutlineDelete size={16} />
             </Button>
           </>
         );

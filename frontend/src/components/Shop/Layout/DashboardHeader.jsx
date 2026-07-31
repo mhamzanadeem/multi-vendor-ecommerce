@@ -15,56 +15,56 @@ const DashboardHeader = () => {
   const { pathname } = useLocation();
 
   const navItems = [
-    { label: "Dashboard", to: "/dashboard", icon: <RxDashboard size={20} /> },
+    { label: "Dashboard", to: "/dashboard", icon: <RxDashboard size={16} /> },
     {
       label: "All Orders",
       to: "/dashboard-orders",
-      icon: <FiShoppingBag size={20} />,
+      icon: <FiShoppingBag size={16} />,
     },
     {
       label: "All Products",
       to: "/dashboard-products",
-      icon: <FiPackage size={20} />,
+      icon: <FiPackage size={16} />,
     },
     {
       label: "Create Product",
       to: "/dashboard-create-product",
-      icon: <AiOutlineFolderAdd size={20} />,
+      icon: <AiOutlineFolderAdd size={16} />,
     },
     {
       label: "All Events",
       to: "/dashboard-events",
-      icon: <MdOutlineLocalOffer size={20} />,
+      icon: <MdOutlineLocalOffer size={16} />,
     },
     {
       label: "Create Event",
       to: "/dashboard-create-event",
-      icon: <VscNewFile size={20} />,
+      icon: <VscNewFile size={16} />,
     },
     {
       label: "Withdraw Money",
       to: "/dashboard-withdraw-money",
-      icon: <CiMoneyBill size={20} />,
+      icon: <CiMoneyBill size={16} />,
     },
     {
       label: "Shop Inbox",
       to: "/dashboard-messages",
-      icon: <BiMessageSquareDetail size={20} />,
+      icon: <BiMessageSquareDetail size={16} />,
     },
     {
       label: "Discount Codes",
       to: "/dashboard-coupouns",
-      icon: <AiOutlineGift size={20} />,
+      icon: <AiOutlineGift size={16} />,
     },
     {
       label: "Refunds",
       to: "/dashboard-refunds",
-      icon: <HiOutlineReceiptRefund size={20} />,
+      icon: <HiOutlineReceiptRefund size={16} />,
     },
     {
       label: "Settings",
       to: "/settings",
-      icon: <CiSettings size={20} />,
+      icon: <CiSettings size={16} />,
     },
   ];
 

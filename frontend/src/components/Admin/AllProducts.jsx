@@ -61,7 +61,7 @@ const AllProducts = () => {
           <>
             <Link to={`/product/${params.id}`}>
               <Button>
-                <AiOutlineEye size={20} />
+                <AiOutlineEye size={16} />
               </Button>
             </Link>
           </>

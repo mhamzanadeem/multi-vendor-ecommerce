@@ -16,7 +16,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin/dashboard" className="w-full flex items-center">
           <RxDashboard
-            size={30}
+            size={16}
             color={`${active === 1 ? "crimson" : "#555"}`}
           />
           <h5
@@ -32,7 +32,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-orders" className="w-full flex items-center">
           <FiShoppingBag
-            size={30}
+            size={16}
             color={`${active === 2 ? "crimson" : "#555"}`}
           />
           <h5
@@ -48,7 +48,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-sellers" className="w-full flex items-center">
           <GrWorkshop
-            size={30}
+            size={16}
             color={`${active === 3 ? "crimson" : "#555"}`}
           />
           <h5
@@ -64,7 +64,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-users" className="w-full flex items-center">
           <HiOutlineUserGroup
-            size={30}
+            size={16}
             color={`${active === 4 ? "crimson" : "#555"}`}
           />
           <h5
@@ -80,7 +80,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-products" className="w-full flex items-center">
           <BsHandbag
-            size={30}
+            size={16}
             color={`${active === 5 ? "crimson" : "#555"}`}
           />
           <h5
@@ -96,7 +96,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
-            size={30}
+            size={16}
             color={`${active === 6 ? "crimson" : "#555"}`}
           />
           <h5
@@ -117,7 +117,7 @@ const AdminSideBar = ({ active }) => {
           className="w-full flex items-center"
         >
           <CiMoneyBill
-            size={30}
+            size={16}
             color={`${active === 7 ? "crimson" : "#555"}`}
           />
           <h5
@@ -136,7 +136,7 @@ const AdminSideBar = ({ active }) => {
           className="w-full flex items-center"
         >
           <AiOutlineSetting
-            size={30}
+            size={16}
             color={`${active === 8 ? "crimson" : "#555"}`}
           />
           <h5

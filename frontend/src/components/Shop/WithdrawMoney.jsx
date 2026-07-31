@@ -123,7 +123,7 @@ const WithdrawMoney = () => {
           >
             <div className="w-full flex justify-end">
               <RxCross1
-                size={25}
+                size={16}
                 onClick={() => setOpen(false) || setPaymentMethod(false)}
                 className="cursor-pointer"
               />
@@ -284,7 +284,7 @@ const WithdrawMoney = () => {
                       </div>
                       <div className="800:w-[50%]">
                         <AiOutlineDelete
-                          size={25}
+                          size={16}
                           className="cursor-pointer"
                           onClick={() => deleteHandler()}
                         />

@@ -180,7 +180,7 @@ const ProductDetails = ({ data }) => {
                   <div>
                     {click ? (
                       <AiFillHeart
-                        size={30}
+                        size={16}
                         className="cursor-pointer"
                         onClick={() => removeFromWishlistHandler(data)}
                         color={click ? "red" : "#333"}
@@ -188,7 +188,7 @@ const ProductDetails = ({ data }) => {
                       />
                     ) : (
                       <AiOutlineHeart
-                        size={30}
+                        size={16}
                         className="cursor-pointer"
                         onClick={() => addToWishlistHandler(data)}
                         color={click ? "red" : "#333"}

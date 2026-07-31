@@ -97,7 +97,7 @@ const AllCoupons = () => {
         return (
           <>
             <Button onClick={() => handleDelete(params.id)}>
-              <AiOutlineDelete size={20} />
+              <AiOutlineDelete size={16} />
             </Button>
           </>
         );
@@ -143,7 +143,7 @@ const AllCoupons = () => {
               <div className="w-[90%] 800:w-[40%] h-[80vh] bg-white rounded-md shadow p-4">
                 <div className="w-full flex justify-end">
                   <RxCross1
-                    size={30}
+                    size={16}
                     className="cursor-pointer"
                     onClick={() => setOpen(false)}
                   />

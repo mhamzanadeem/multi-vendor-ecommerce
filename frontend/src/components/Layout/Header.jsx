@@ -60,7 +60,7 @@ const Header = ({ activeHeading }) => {
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenWishlist(true)}
               >
-                <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+                <AiOutlineHeart size={16} color="rgb(255 255 255 / 83%)" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {wishlist && wishlist.length}
                 </span>
@@ -73,7 +73,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpenCart(true)}
               >
                 <AiOutlineShoppingCart
-                  size={30}
+                  size={16}
                   color="rgb(255 255 255 / 83%)"
                 />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
@@ -133,7 +133,7 @@ const Header = ({ activeHeading }) => {
         <div className="w-full flex items-center justify-between">
           <div>
             <BiMenuAltLeft
-              size={40}
+              size={28}
               className="ml-4"
               onClick={() => setOpen(true)}
             />
@@ -152,7 +152,7 @@ const Header = ({ activeHeading }) => {
               className="relative mr-[20px]"
               onClick={() => setOpenCart(true)}
             >
-              <AiOutlineShoppingCart size={30} />
+              <AiOutlineShoppingCart size={16} />
               <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                 {cart && cart.length}
               </span>
@@ -177,14 +177,14 @@ const Header = ({ activeHeading }) => {
                     className="relative mr-[15px]"
                     onClick={() => setOpenWishlist(true) || setOpen(false)}
                   >
-                    <AiOutlineHeart size={30} className="mt-5 ml-3" />
+                    <AiOutlineHeart size={16} className="mt-5 ml-3" />
                     <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                       {wishlist && wishlist.length}
                     </span>
                   </div>
                 </div>
                 <RxCross1
-                  size={30}
+                  size={16}
                   className="ml-4 mt-5"
                   onClick={() => setOpen(false)}
                 />

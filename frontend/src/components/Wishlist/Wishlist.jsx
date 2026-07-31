@@ -28,7 +28,7 @@ const Wishlist = ({ setOpenWishlist }) => {
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
               <RxCross1
-                size={25}
+                size={16}
                 className="cursor-pointer"
                 onClick={() => setOpenWishlist(false)}
               />
@@ -40,14 +40,14 @@ const Wishlist = ({ setOpenWishlist }) => {
             <div>
               <div className="flex w-full justify-end pt-5 pr-5">
                 <RxCross1
-                  size={25}
+                  size={16}
                   className="cursor-pointer"
                   onClick={() => setOpenWishlist(false)}
                 />
               </div>
               {/* Item length */}
               <div className={`${styles.noramlFlex} p-4`}>
-                <AiOutlineHeart size={25} />
+                <AiOutlineHeart size={16} />
                 <h5 className="pl-2 text-[20px] font-[500]">
                   {wishlist && wishlist.length} items
                 </h5>
@@ -92,7 +92,7 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
           </h4>
         </div>
         <div>
-          <BsCartPlus size={20} className="cursor-pointer" tile="Add to cart"
+          <BsCartPlus size={16} className="cursor-pointer" tile="Add to cart"
            onClick={() => addToCartHandler(data)}
           />
         </div>

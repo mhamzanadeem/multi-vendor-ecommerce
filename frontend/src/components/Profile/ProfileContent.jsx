@@ -261,7 +261,7 @@ const AllOrders = () => {
           <>
             <Link to={`/user/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <AiOutlineArrowRight size={16} />
               </Button>
             </Link>
           </>
@@ -351,7 +351,7 @@ const AllRefundOrders = () => {
           <>
             <Link to={`/user/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <AiOutlineArrowRight size={16} />
               </Button>
             </Link>
           </>
@@ -438,7 +438,7 @@ const TrackOrder = () => {
           <>
             <Link to={`/user/track/order/${params.id}`}>
               <Button>
-                <MdTrackChanges size={20} />
+                <MdTrackChanges size={16} />
               </Button>
             </Link>
           </>
@@ -610,7 +610,7 @@ const Address = () => {
           <div className="w-[35%] h-[80vh] bg-white rounded shadow relative overflow-y-scroll">
             <div className="w-full flex justify-end p-3">
               <RxCross1
-                size={30}
+                size={16}
                 className="cursor-pointer"
                 onClick={() => setOpen(false)}
               />
@@ -775,7 +775,7 @@ const Address = () => {
             </div>
             <div className="min-w-[10%] flex items-center justify-between pl-8">
               <AiOutlineDelete
-                size={25}
+                size={16}
                 className="cursor-pointer"
                 onClick={() => handleDelete(item)}
               />

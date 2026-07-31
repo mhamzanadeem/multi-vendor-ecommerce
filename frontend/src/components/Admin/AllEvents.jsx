@@ -55,7 +55,7 @@ const AllEvents = () => {
           <>
             <Link to={`/product/${params.id}?isEvent=true`}>
               <Button>
-                <AiOutlineEye size={20} />
+                <AiOutlineEye size={16} />
               </Button>
             </Link>
           </>
