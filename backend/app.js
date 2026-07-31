@@ -16,7 +16,17 @@ app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
 
-app.use(bodyParser.urlencoded({ extended: true}));
+// [DEBUG] log every incoming request's declared body size before parsing
+app.use((req, res, next) => {
+  console.log(
+    `[DEBUG] ${req.method} ${req.originalUrl} | Content-Length: ${
+      req.headers["content-length"] || "chunked/unknown"
+    } bytes`
+  );
+  next();
+});
+
+app.use(express.json({ limit: "50mb" }));
 
 // import routes
 const user = require("./controller/user");
