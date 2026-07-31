@@ -16,6 +16,7 @@ const ShopCreate = () => {
   const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ const ShopCreate = () => {
       toast.error("Please upload a shop avatar before submitting");
       return;
     }
-    
+
     axios
       .post(`${server}/shop/create-shop`, {
         name,
@@ -36,21 +37,16 @@ const ShopCreate = () => {
         phoneNumber,
       })
       .then((res) => {
-        toast.success(res.data.message);
-        setName("");
-        setEmail("");
-        setPassword("");
-        setAvatar();
-        setZipCode();
-        setAddress("");
-        setPhoneNumber();
+        toast.success("Shop created successfully!");
+        navigate("/dashboard");
+        window.location.reload(true);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
   };
 
-const handleFileInputChange = (e) => {
+  const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
@@ -224,7 +220,9 @@ const handleFileInputChange = (e) => {
               <label
                 htmlFor="avatar"
                 className="block text-sm font-medium text-gray-700"
-              ></label>
+              >
+                Shop Avatar
+              </label>
               <div className="mt-2 flex items-center">
                 <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
                   {avatar ? (
