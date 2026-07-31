@@ -20,6 +20,11 @@ const ShopCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!avatar) {
+      toast.error("Please upload a shop avatar before submitting");
+      return;
+    }
+    
     axios
       .post(`${server}/shop/create-shop`, {
         name,
