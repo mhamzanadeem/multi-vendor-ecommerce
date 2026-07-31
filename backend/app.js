@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['https://multi-vendor-ecommerce-ten-delta.vercel.app', 'http://localhost:5173'],
+  origin: [process.env.FRONTEND_URL, process.env.CLIENT_URL],
   credentials: true
 }));
 
