@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, process.env.CLIENT_URL],
+  origin: true,
   credentials: true
 }));
 
