@@ -17,12 +17,27 @@ import {
 import Store from "./redux/store.js";
 import { loadUser } from "./redux/actions/user.js";
 import { getAllProducts } from "./redux/actions/product.js";
+import { pingKeepAliveTargets } from "./utils/keepAlive.js";
 
 const App = () => {
   useEffect(() => {
     Store.dispatch(loadUser());
     Store.dispatch(getAllProducts());
   }, []);
+
+  useEffect(() => {
+    const TEN_MINUTES = 10 * 60 * 1000;
+
+    const pingNow = () => {
+      void pingKeepAliveTargets();
+    };
+
+    pingNow();
+    const intervalId = window.setInterval(pingNow, TEN_MINUTES);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
