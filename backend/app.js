@@ -6,11 +6,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['https://multi-vendor-ecommerce-ten-delta.vercel.app',],
+  origin: ['https://multi-vendor-ecommerce-ten-delta.vercel.app', 'http://localhost:5173'],
   credentials: true
 }));
 
-app.use(express.json());
 app.use(cookieParser());
 app.use("/test", (req, res) => {
   res.send("Hello world!");

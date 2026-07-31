@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   LoginPage,
   SignupPage,
@@ -59,6 +61,7 @@ const App = () => {
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
+      <ToastContainer position="top-center" autoClose={3000} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

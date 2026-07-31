@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
 import { createevent } from "../../redux/actions/event";
 
 const CreateEvent = () => {
   const { seller } = useSelector((state) => state.seller);
-  const { success, error } = useSelector((state) => state.events);
-  const navigate = useNavigate();
+  const { success, error, isLoading } = useSelector((state) => state.events);
   const dispatch = useDispatch();
 
   const [images, setImages] = useState([]);
@@ -53,8 +51,16 @@ const CreateEvent = () => {
     }
     if (success) {
       toast.success("Event created successfully!");
-      navigate("/dashboard-events");
-      window.location.reload();
+      setImages([]);
+      setName("");
+      setDescription("");
+      setCategory("");
+      setTags("");
+      setOriginalPrice();
+      setDiscountPrice();
+      setStock();
+      setStartDate(null);
+      setEndDate(null);
     }
   }, [dispatch, error, success]);
 
@@ -269,8 +275,9 @@ const CreateEvent = () => {
           <div>
             <input
               type="submit"
-              value="Create"
-              className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              value={isLoading ? "Creating..." : "Create"}
+              disabled={isLoading}
+              className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             />
           </div>
         </div>

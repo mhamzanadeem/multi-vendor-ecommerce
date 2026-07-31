@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsFillBagFill } from "react-icons/bs";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/styles";
 import { getAllOrdersOfUser } from "../redux/actions/order";
@@ -14,6 +14,7 @@ const UserOrderDetails = () => {
   const { orders } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [comment, setComment] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -61,6 +62,27 @@ const UserOrderDetails = () => {
     }).catch((error) => {
       toast.error(error.response.data.message);
     })
+  };
+
+  const handleMessageSubmit = async () => {
+    const sellerId = data?.cart[0]?.shopId;
+    if (!sellerId) {
+      toast.error("Seller information not found");
+      return;
+    }
+    const groupTitle = id + user._id;
+    await axios
+      .post(`${server}/conversation/create-new-conversation`, {
+        groupTitle,
+        userId: user._id,
+        sellerId,
+      })
+      .then((res) => {
+        navigate(`/inbox?${res.data.conversation._id}`);
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
   };
 
   return (
@@ -233,9 +255,12 @@ const UserOrderDetails = () => {
         </div>
       </div>
       <br />
-      <Link to="/">
-        <div className={`${styles.button} text-white`}>Send Message</div>
-      </Link>
+      <div
+        className={`${styles.button} text-white cursor-pointer`}
+        onClick={handleMessageSubmit}
+      >
+        Send Message
+      </div>
       <br />
       <br />
     </div>

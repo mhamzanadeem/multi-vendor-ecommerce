@@ -60,8 +60,8 @@ const Header = ({ activeHeading }) => {
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenWishlist(true)}
               >
-                <AiOutlineHeart size={16} color="rgb(255 255 255 / 83%)" />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <AiOutlineHeart size={32} color="rgba(255, 255, 255, 0.83)" />
+                <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
                   {wishlist && wishlist.length}
                 </span>
               </div>
@@ -73,10 +73,10 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpenCart(true)}
               >
                 <AiOutlineShoppingCart
-                  size={16}
-                  color="rgb(255 255 255 / 83%)"
+                  size={32}
+                  color="rgba(255, 255, 255, 0.83)"
                 />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
                   {cart && cart.length}
                 </span>
               </div>

@@ -252,6 +252,7 @@ router.put(
         shop,
       });
     } catch (error) {
+      console.error("[DEBUG] update-seller-info threw:", error);
       return next(new ErrorHandler(error.message, 500));
     }
   })
