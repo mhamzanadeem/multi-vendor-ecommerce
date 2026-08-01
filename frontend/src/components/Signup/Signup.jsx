@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
+import { server } from "../../server";
 
 function Signup() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v2/user/create-user`,
+        `${server}/user/create-user`,
         { name, email, password, avatar },
         { headers: { "Content-Type": "application/json" } }
       );

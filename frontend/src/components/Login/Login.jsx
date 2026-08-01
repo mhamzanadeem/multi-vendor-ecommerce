@@ -6,6 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { loadUser } from "../../redux/actions/user";
 import Store from "../../redux/store";
+import { server } from "../../server";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Login() {
     setError("");
     setLoading(true);
 
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/v2/user/login-user`;
+    const url = `${server}/user/login-user`;
     console.log("Login: sending POST to", url);
 
     try {
