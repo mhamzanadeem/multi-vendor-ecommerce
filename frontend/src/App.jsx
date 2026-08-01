@@ -37,6 +37,8 @@ import ShopAllCoupons from "./pages/Shop/ShopAllCoupons";
 import ShopAllRefunds from "./pages/Shop/ShopAllRefunds";
 import ShopSettingsPage from "./pages/Shop/ShopSettingsPage";
 import ShopOrderDetails from "./pages/Shop/ShopOrderDetails";
+import OrderDetailsPage from "./pages/Shop/OrderDetailsPage";
+import TrackOrderPage from "./pages/Shop/TrackOrderPage";
 import ShopHomePage from "./pages/Shop/ShopHomePage";
 import ShopPreviewPage from "./pages/Shop/ShopPreviewPage";
 import SellerActivationPage from "./pages/Shop/SellerActivationPage";
@@ -86,6 +88,16 @@ const App = () => {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/order/success" element={<OrderSuccessPage />} />
+          <Route
+            path="/order/:id"
+            element={
+              <SellerProtectedRoute>
+                <ShopOrderDetails />
+              </SellerProtectedRoute>
+            }
+          />
+          <Route path="/user/order/:id" element={<OrderDetailsPage />} />
+          <Route path="/user/track/order/:id" element={<TrackOrderPage />} />
           <Route path="/shop/:id" element={<ShopHomePage />} />
           <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
           <Route
