@@ -80,6 +80,9 @@ function Signup() {
                   {error}
                 </div>
               )}
+              <div className="text-blue-600 bg-blue-50 border border-blue-200 rounded-md p-3 text-sm">
+                <strong>Default credentials:</strong> hamzaatwork2000@gmail.com / seller01
+              </div>
               <div>
                 <label
                   htmlFor="fullname"

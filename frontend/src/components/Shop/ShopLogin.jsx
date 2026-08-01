@@ -44,6 +44,9 @@ const ShopLogin = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="text-blue-600 bg-blue-50 border border-blue-200 rounded-md p-3 text-sm">
+              <strong>Default credentials:</strong> contact@techhaven.com / Shop01
+            </div>
             <div>
               <label
                 htmlFor="email"
@@ -95,8 +98,8 @@ const ShopLogin = () => {
                 )}
               </div>
             </div>
-            <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
+            <div className={`${styles.normalFlex} justify-between`}>
+              <div className={`${styles.normalFlex}`}>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -127,9 +130,9 @@ const ShopLogin = () => {
                 Submit
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
+            <div className={`${styles.normalFlex} w-full`}>
               <h4>Not have any account?</h4>
-              <Link to="/shop-create" className="text-blue-600 pl-2">
+              <Link to="/sign-up" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>

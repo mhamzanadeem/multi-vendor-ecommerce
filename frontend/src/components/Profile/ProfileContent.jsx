@@ -3,6 +3,8 @@ import {
   AiOutlineArrowRight,
   AiOutlineCamera,
   AiOutlineDelete,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { server } from "../../server";
@@ -47,7 +49,7 @@ const ProfileContent = ({ active }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserInformation(name, email, phoneNumber, password));
+    dispatch(updateUserInformation(name, email, phoneNumber, password || ""));
   };
 
   const handleImage = async (e) => {
@@ -129,6 +131,7 @@ const ProfileContent = ({ active }) => {
                 </div>
               </div>
 
+              {user?.email !== "hamzaatwork2000@gmail.com" && (
               <div className="w-full 800:flex block pb-3">
                 <div className=" w-[100%] 800:w-[50%]">
                   <label className="block pb-2">Phone Number</label>
@@ -152,6 +155,7 @@ const ProfileContent = ({ active }) => {
                   />
                 </div>
               </div>
+              )}
               <input
                 className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
                 required
@@ -476,6 +480,11 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [oldVisible, setOldVisible] = useState(false);
+  const [newVisible, setNewVisible] = useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
+  const { user } = useSelector((state) => state.user);
+  const isDefaultEmail = user?.email === "hamzaatwork2000@gmail.com";
 
   const passwordChangeHandler = async (e) => {
     e.preventDefault();
@@ -501,6 +510,11 @@ const ChangePassword = () => {
       <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">
         Change Password
       </h1>
+      {isDefaultEmail && (
+        <div className="text-red-600 bg-red-50 border border-red-200 rounded-md p-3 text-sm text-center mb-4">
+          Default email password cannot be changed.
+        </div>
+      )}
       <div className="w-full">
         <form
           aria-required
@@ -509,38 +523,84 @@ const ChangePassword = () => {
         >
           <div className=" w-[100%] 800:w-[50%] mt-5">
             <label className="block pb-2">Enter your old password</label>
-            <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
-              required
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type={oldVisible ? "text" : "password"}
+                className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
+                required
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+              {oldVisible ? (
+                <AiOutlineEye
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setOldVisible(false)}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setOldVisible(true)}
+                />
+              )}
+            </div>
           </div>
           <div className=" w-[100%] 800:w-[50%] mt-2">
             <label className="block pb-2">Enter your new password</label>
-            <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
-              required
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type={newVisible ? "text" : "password"}
+                className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
+                required
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              {newVisible ? (
+                <AiOutlineEye
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setNewVisible(false)}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setNewVisible(true)}
+                />
+              )}
+            </div>
           </div>
           <div className=" w-[100%] 800:w-[50%] mt-2">
             <label className="block pb-2">Enter your confirm password</label>
+            <div className="relative">
+              <input
+                type={confirmVisible ? "text" : "password"}
+                className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {confirmVisible ? (
+                <AiOutlineEye
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setConfirmVisible(false)}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="absolute right-[6%] top-2 cursor-pointer"
+                  size={16}
+                  onClick={() => setConfirmVisible(true)}
+                />
+              )}
+            </div>
             <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800:mb-0`}
-              required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <input
-              className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+              className={`w-[95%] h-[40px] border text-center rounded-[3px] mt-8 ${isDefaultEmail ? "border-gray-300 text-gray-400 cursor-not-allowed" : "border-[#3a24db] text-[#3a24db] cursor-pointer"}`}
               required
               value="Update"
               type="submit"
+              disabled={isDefaultEmail}
             />
           </div>
         </form>

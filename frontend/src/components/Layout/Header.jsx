@@ -41,9 +41,9 @@ const Header = ({ activeHeading }) => {
         } transition hidden 800:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}
       >
         <div
-          className={`${styles.section} relative ${styles.noramlFlex} justify-between w-full`}
+          className={`${styles.section} relative ${styles.normalFlex} justify-between w-full`}
         >
-          <div className={`${styles.noramlFlex}`}>
+          <div className={`${styles.normalFlex}`}>
             <Link to="/" className="mr-6">
               <img
                 src="https://images.rawpixel.com/image_200/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%20200w,%20https://images.rawpixel.com/image_400/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%20400w,%20https://images.rawpixel.com/image_600/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%20600w,%20https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%201600w,%20https://images.rawpixel.com/image_1100/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%202400w,%20https://images.rawpixel.com/image_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzMi1uaW5nLTExXzEuanBn.jpg%203000w"
@@ -55,34 +55,38 @@ const Header = ({ activeHeading }) => {
           </div>
 
           <div className="flex items-center">
-            <div className={`${styles.noramlFlex}`}>
-              <div
-                className="relative cursor-pointer mr-[15px]"
-                onClick={() => setOpenWishlist(true)}
-              >
-                <AiOutlineHeart size={32} color="rgba(255, 255, 255, 0.83)" />
-                <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
-                  {wishlist && wishlist.length}
-                </span>
-              </div>
-            </div>
+            {isAuthenticated && (
+              <>
+                <div className={`${styles.normalFlex}`}>
+                  <div
+                    className="relative cursor-pointer mr-[15px]"
+                    onClick={() => setOpenWishlist(true)}
+                  >
+                    <AiOutlineHeart size={32} color="rgba(255, 255, 255, 0.83)" />
+                    <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
+                      {wishlist && wishlist.length}
+                    </span>
+                  </div>
+                </div>
 
-            <div className={`${styles.noramlFlex}`}>
-              <div
-                className="relative cursor-pointer mr-[15px]"
-                onClick={() => setOpenCart(true)}
-              >
-                <AiOutlineShoppingCart
-                  size={32}
-                  color="rgba(255, 255, 255, 0.83)"
-                />
-                <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
-                  {cart && cart.length}
-                </span>
-              </div>
-            </div>
+                <div className={`${styles.normalFlex}`}>
+                  <div
+                    className="relative cursor-pointer mr-[15px]"
+                    onClick={() => setOpenCart(true)}
+                  >
+                    <AiOutlineShoppingCart
+                      size={32}
+                      color="rgba(255, 255, 255, 0.83)"
+                    />
+                    <span className="absolute -right-[6px] -top-[6px] rounded-full bg-[#3bc177] w-[16px] h-[16px] p-0 m-0 text-white font-mono text-[10px] leading-[16px] text-center">
+                      {cart && cart.length}
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
 
-            <div className={`${styles.noramlFlex} mr-4`}>
+            <div className={`${styles.normalFlex} mr-4`}>
               {isAuthenticated ? (
                 <Link to="/profile" className="relative cursor-pointer">
                   <img
@@ -92,19 +96,16 @@ const Header = ({ activeHeading }) => {
                   />
                 </Link>
               ) : (
-                <div className={`${styles.noramlFlex}`}>
+                <div className={`${styles.normalFlex}`}>
                   <Link to="/login" className="text-[#fff] mr-3 font-[500]">
                     Login
-                  </Link>
-                  <Link to="/sign-up" className="text-[#fff] font-[500]">
-                    Sign Up
                   </Link>
                 </div>
               )}
             </div>
 
             <div className={`${styles.button} !w-[130px] !h-[40px] !my-0`}>
-              <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+              <Link to={`${isSeller ? "/dashboard" : "/shop-login"}`}>
                 <h1 className="text-[#fff] flex items-center text-[14px]">
                   {isSeller ? "Go Dashboard" : "Become Seller"}
                   <IoIosArrowForward className="ml-1" />
@@ -148,21 +149,23 @@ const Header = ({ activeHeading }) => {
             </Link>
           </div>
           <div>
-            <div
-              className="relative mr-[20px]"
-              onClick={() => setOpenCart(true)}
-            >
-              <AiOutlineShoppingCart size={16} />
-              <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
-                {cart && cart.length}
-              </span>
-            </div>
+            {isAuthenticated && (
+              <div
+                className="relative mr-[20px]"
+                onClick={() => setOpenCart(true)}
+              >
+                <AiOutlineShoppingCart size={16} />
+                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+                  {cart && cart.length}
+                </span>
+              </div>
+            )}
           </div>
           {/* cart popup */}
-          {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+          {isAuthenticated && openCart ? <Cart setOpenCart={setOpenCart} /> : null}
 
           {/* wishlist popup */}
-          {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
+          {isAuthenticated && openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
         </div>
 
         {/* header sidebar */}
@@ -194,7 +197,7 @@ const Header = ({ activeHeading }) => {
 
               <Navbar active={activeHeading} />
               <div className={`${styles.button} ml-4 !rounded-[4px]`}>
-                <Link to="/shop-create">
+                <Link to="/shop-login">
                   <h1 className="text-[#fff] flex items-center">
                     Become Seller <IoIosArrowForward className="ml-1" />
                   </h1>
@@ -219,15 +222,9 @@ const Header = ({ activeHeading }) => {
                   <>
                     <Link
                       to="/login"
-                      className="text-[18px] pr-[10px] text-[#000000b7]"
-                    >
-                      Login /
-                    </Link>
-                    <Link
-                      to="/sign-up"
                       className="text-[18px] text-[#000000b7]"
                     >
-                      Sign up
+                      Login
                     </Link>
                   </>
                 )}
