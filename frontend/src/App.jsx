@@ -23,6 +23,9 @@ import { pingKeepAliveTargets } from "./utils/keepAlive.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute.jsx";
 import ShopDashboardPage from "./pages/Shop/ShopDashboardPage";
 import ShopLoginPage from "./pages/Shop/ShopLoginPage";
+import CheckoutPage from "./pages/Shop/CheckoutPage";
+import PaymentPage from "./pages/Shop/PaymentPage";
+import OrderSuccessPage from "./pages/Shop/OrderSuccessPage";
 import ShopAllOrders from "./pages/Shop/ShopAllOrders";
 import ShopAllProducts from "./pages/Shop/ShopAllProducts";
 import ShopCreateProduct from "./pages/Shop/ShopCreateProduct";
@@ -80,6 +83,9 @@ const App = () => {
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/shop-create" element={<ShopCreatePage />} />
           <Route path="/shop-login" element={<ShopLoginPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/order/success" element={<OrderSuccessPage />} />
           <Route path="/shop/:id" element={<ShopHomePage />} />
           <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
           <Route
