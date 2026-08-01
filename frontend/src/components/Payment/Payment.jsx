@@ -242,72 +242,75 @@ const PaymentInfo = ({
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">Exp Date</label>
-                  <CardExpiryElement
-                    className={`${styles.input}`}
-                    options={{
-                      style: {
-                        base: {
-                          fontSize: "19px",
-                          lineHeight: 1.5,
-                          color: "#444",
-                        },
-                        empty: {
-                          color: "#3a120a",
-                          backgroundColor: "transparent",
-                          "::placeholder": {
+                  <div className={`${styles.input} !w-[95%]`}>
+                    <CardExpiryElement
+                      options={{
+                        style: {
+                          base: {
+                            fontSize: "19px",
+                            lineHeight: 1.5,
                             color: "#444",
                           },
+                          empty: {
+                            color: "#3a120a",
+                            backgroundColor: "transparent",
+                            "::placeholder": {
+                              color: "#444",
+                            },
+                          },
                         },
-                      },
-                    }}
-                  />
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="w-full flex pb-3">
                 <div className="w-[50%]">
                   <label className="block pb-2">Card Number</label>
-                  <CardNumberElement
-                    className={`${styles.input} !h-[35px] !w-[95%]`}
-                    options={{
-                      style: {
-                        base: {
-                          fontSize: "19px",
-                          lineHeight: 1.5,
-                          color: "#444",
-                        },
-                        empty: {
-                          color: "#3a120a",
-                          backgroundColor: "transparent",
-                          "::placeholder": {
+                  <div className={`${styles.input} !w-[95%]`}>
+                    <CardNumberElement
+                      options={{
+                        style: {
+                          base: {
+                            fontSize: "19px",
+                            lineHeight: 1.5,
                             color: "#444",
                           },
+                          empty: {
+                            color: "#3a120a",
+                            backgroundColor: "transparent",
+                            "::placeholder": {
+                              color: "#444",
+                            },
+                          },
                         },
-                      },
-                    }}
-                  />
+                      }}
+                    />
+                  </div>
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">CVV</label>
-                  <CardCvcElement
-                    className={`${styles.input} !h-[35px]`}
-                    options={{
-                      style: {
-                        base: {
-                          fontSize: "19px",
-                          lineHeight: 1.5,
-                          color: "#444",
-                        },
-                        empty: {
-                          color: "#3a120a",
-                          backgroundColor: "transparent",
-                          "::placeholder": {
+                  <div className={`${styles.input}`}>
+                    <CardCvcElement
+                      options={{
+                        style: {
+                          base: {
+                            fontSize: "19px",
+                            lineHeight: 1.5,
                             color: "#444",
                           },
+                          empty: {
+                            color: "#3a120a",
+                            backgroundColor: "transparent",
+                            "::placeholder": {
+                              color: "#444",
+                            },
+                          },
                         },
-                      },
-                    }}
-                  />
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
               <input
