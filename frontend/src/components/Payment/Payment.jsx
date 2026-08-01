@@ -242,13 +242,13 @@ const PaymentInfo = ({
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">Exp Date</label>
-                  <div className={`${styles.input} !w-[95%]`}>
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
                     <CardExpiryElement
                       options={{
                         style: {
                           base: {
                             fontSize: "19px",
-                            lineHeight: 1.5,
+                            lineHeight: "1.5",
                             color: "#444",
                           },
                           empty: {
@@ -268,13 +268,13 @@ const PaymentInfo = ({
               <div className="w-full flex pb-3">
                 <div className="w-[50%]">
                   <label className="block pb-2">Card Number</label>
-                  <div className={`${styles.input} !w-[95%]`}>
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
                     <CardNumberElement
                       options={{
                         style: {
                           base: {
                             fontSize: "19px",
-                            lineHeight: 1.5,
+                            lineHeight: "1.5",
                             color: "#444",
                           },
                           empty: {
@@ -291,13 +291,13 @@ const PaymentInfo = ({
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">CVV</label>
-                  <div className={`${styles.input}`}>
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
                     <CardCvcElement
                       options={{
                         style: {
                           base: {
                             fontSize: "19px",
-                            lineHeight: 1.5,
+                            lineHeight: "1.5",
                             color: "#444",
                           },
                           empty: {
