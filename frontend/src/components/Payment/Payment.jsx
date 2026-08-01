@@ -242,7 +242,7 @@ const PaymentInfo = ({
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">Exp Date</label>
-                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px]">
                     <CardExpiryElement
                       options={{
                         style: {
@@ -268,7 +268,7 @@ const PaymentInfo = ({
               <div className="w-full flex pb-3">
                 <div className="w-[50%]">
                   <label className="block pb-2">Card Number</label>
-                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px]">
                     <CardNumberElement
                       options={{
                         style: {
@@ -291,7 +291,7 @@ const PaymentInfo = ({
                 </div>
                 <div className="w-[50%]">
                   <label className="block pb-2">CVV</label>
-                  <div className="w-full border p-1 rounded-[5px] !h-[40px] flex items-center">
+                  <div className="w-full border p-1 rounded-[5px] !h-[40px]">
                     <CardCvcElement
                       options={{
                         style: {
