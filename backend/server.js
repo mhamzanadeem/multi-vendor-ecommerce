@@ -1,5 +1,5 @@
 // config - MUST be loaded before any other requires
-if (process.env.NODE_ENV !== "PRODUCTION") {
+if (!["production", "PRODUCTION"].includes(process.env.NODE_ENV)) {
   require("dotenv").config({
     path: require("path").join(__dirname, "config", ".env"),
   });

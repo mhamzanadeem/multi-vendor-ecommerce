@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "type": "commonjs",
   "main": "eslint.config.js",
@@ -48,5 +48,8 @@
     "postcss": "^8.5.24",
     "tailwindcss": "^4.3.3",
     "vite": "^6.3.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -52,3 +52,28 @@ pids/
 *.njsproj
 *.sln
 *.sw?
+# Guardian secrets and reports
+.env.*
+!.env.example
+reports/
+.npm-cache-check/
+
+# Test coverage and local tool caches
+coverage/
+.nyc_output/
+.npm/
+.cache/
+.vite/
+
+# Local hosting-provider metadata (keep deployment configuration tracked)
+.vercel/
+.netlify/
+
+# Local database files and exported backups
+*.sqlite
+*.sqlite3
+*.dump
+
+# Private signing keys
+*.pem
+*.key

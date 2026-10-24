@@ -2,15 +2,19 @@ const express = require("express");
 const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const cors = require("cors");
 
 app.use(cors({
-  origin: true,
+  origin: process.env.FRONTEND_ORIGIN ? process.env.FRONTEND_ORIGIN.split(",") : true,
   credentials: true
 }));
 
 app.use(cookieParser());
+app.get('/health/ready', (req, res) => {
+  const ready = mongoose.connection.readyState === 1;
+  res.status(ready ? 200 : 503).json({ ready, revision: process.env.APP_REVISION || process.env.RENDER_GIT_COMMIT || null });
+});
 app.use("/test", (req, res) => {
   res.send("Hello world!");
 });

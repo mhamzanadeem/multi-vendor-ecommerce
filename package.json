@@ -2,14 +2,18 @@
   "name": "multi-vendor-ecommerce",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "type": "commonjs",
   "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test --test-concurrency=1 backend/tests/*.test.js",
     "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "test:unit": "node --test backend/tests/config.test.js backend/tests/readiness.test.js",
+    "test:acceptance": "node --test --test-concurrency=1 backend/tests/coupon-ownership.test.js",
+    "seed:demo": "node scripts/seed-demo.js",
+    "smoke": "node scripts/smoke-staging.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -25,5 +29,8 @@
     "nodemon": "^3.1.14",
     "socket.io": "^4.8.3",
     "stripe": "^22.4.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
