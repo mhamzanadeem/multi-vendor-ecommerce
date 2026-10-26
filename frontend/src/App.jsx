@@ -42,6 +42,7 @@ import TrackOrderPage from "./pages/Shop/TrackOrderPage";
 import ShopHomePage from "./pages/Shop/ShopHomePage";
 import ShopPreviewPage from "./pages/Shop/ShopPreviewPage";
 import SellerActivationPage from "./pages/Shop/SellerActivationPage";
+import HackathonBanner from "./components/Layout/HackathonBanner";
 
 const App = () => {
   useEffect(() => {
@@ -65,6 +66,7 @@ const App = () => {
 
   return (
     <div>
+      <HackathonBanner />
       <Toaster position="top-center" reverseOrder={false} />
       <ToastContainer position="top-center" autoClose={3000} />
       <BrowserRouter>

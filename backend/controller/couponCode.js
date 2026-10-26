@@ -55,10 +55,19 @@ router.delete(
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const couponCode = await CoupounCode.findByIdAndDelete(req.params.id);
+      if (!req.seller) {
+        return next(new ErrorHandler("Please login to continue", 401));
+      }
+
+      // Ownership is enforced atomically in the delete filter. Missing and
+      // foreign coupons get the same 404 so coupon IDs can't be probed.
+      const couponCode = await CoupounCode.findOneAndDelete({
+        _id: req.params.id,
+        shopId: String(req.seller._id),
+      });
 
       if (!couponCode) {
-        return next(new ErrorHandler("Coupon code dosen't exists!", 400));
+        return next(new ErrorHandler("Coupon code dosen't exists!", 404));
       }
       res.status(201).json({
         success: true,

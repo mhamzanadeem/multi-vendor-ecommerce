@@ -1,0 +1,44 @@
+.hackathon-banner {
+  background: #101b30;
+  color: #edf3ff;
+  border-bottom: 2px solid #fb923c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.hackathon-banner__content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.hackathon-banner strong { color: #fff; font-weight: 700; }
+.hackathon-banner__divider { color: #fb923c; padding: 0 6px; }
+.hackathon-banner__details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.hackathon-banner a {
+  color: #a5f3fc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.hackathon-banner a:hover { color: #fff; }
+.hackathon-banner a:focus-visible {
+  outline: 2px solid #fb923c;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+@media (max-width: 600px) {
+  .hackathon-banner__content {
+    padding: 8px 14px;
+    justify-content: center;
+    text-align: center;
+  }
+  .hackathon-banner__details { justify-content: center; }
+}

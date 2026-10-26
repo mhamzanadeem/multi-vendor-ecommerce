@@ -3,8 +3,13 @@
 Preparatory tooling for a GitLab Duo seller-isolation repair workflow. The
 marketplace predates the hackathon; new automation is documented separately.
 
-**Status:** coupon repair reserved for Duo. Integration, GitLab execution and
-hosting evidence are pending. No production release or prize eligibility is claimed.
+**Status:** the seller-scoped coupon deletion repair reviewed in
+[Showcase MR !3](https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/43060293/showcase/-/merge_requests/3)
+is synchronized into this checkout for deployment through the existing GitHub
+hosting integrations. A small banner identifies the hackathon demo and links to
+Showcase. This synchronization is not a new agent-authored repair. Verify the
+GitHub commit and both hosting deployment records before claiming it is live.
+Earlier baseline validation notes below describe the pre-repair snapshot.
 
 - [Setup and tests](docs/setup.md)
 - [Starting point and provenance](docs/starting-point.md)
