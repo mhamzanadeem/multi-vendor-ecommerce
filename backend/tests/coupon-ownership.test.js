@@ -2,6 +2,15 @@ const { test, before, after, beforeEach } = require('node:test');
 const assert = require('node:assert/strict');
 const mongoose = require('mongoose');
 const { once } = require('node:events');
+const { randomUUID } = require('node:crypto');
+const runId = randomUUID();
+const shopIds = [];
+const couponIds = [];
+async function cleanupFixtures() {
+  if (mongoose.connection.readyState !== 1) return;
+  await Coupon.deleteMany({ _id: { $in: couponIds } });
+  await Shop.deleteMany({ _id: { $in: shopIds } });
+}
 const { testDatabaseUrl } = require('../../scripts/test-database');
 const Shop = require('../model/shop');
 const Coupon = require('../model/coupounCode');
@@ -13,27 +22,29 @@ before(async () => {
   process.env.JWT_SECRET_KEY = 'isolated-test-signing-key-not-for-deployment';
   process.env.JWT_EXPIRES = '1h';
   process.env.PAYMENTS_ENABLED = 'false';
-  await mongoose.connect(testDatabaseUrl(process.env.TEST_DB_URL), { serverSelectionTimeoutMS: 5000 });
+  await mongoose.connect(testDatabaseUrl(process.env.TEST_DB_URL), { serverSelectionTimeoutMS: 15000, autoIndex: false });
   server = require('../app').listen(0, '127.0.0.1');
   await once(server, 'listening');
   base = `http://127.0.0.1:${server.address().port}/api/v2`;
 });
 after(async () => {
   if (server) await new Promise(resolve => server.close(resolve));
-  if (mongoose.connection.readyState === 1) {
-    await Shop.deleteMany({ email: { $in: ['acceptance-a@example.test', 'acceptance-b@example.test'] } });
-    await Coupon.deleteMany({ name: 'GUARDIAN_ACCEPTANCE' });
-  }
+  await cleanupFixtures();
   await mongoose.disconnect();
 });
 beforeEach(async () => {
-  await Shop.deleteMany({ email: { $in: ['acceptance-a@example.test', 'acceptance-b@example.test'] } });
-  await Coupon.deleteMany({ name: 'GUARDIAN_ACCEPTANCE' });
-  const make = label => Shop.create({ name: `Acceptance ${label}`, email: `acceptance-${label}@example.test`, password,
+  await cleanupFixtures();
+  const make = async label => {
+    const id = new mongoose.Types.ObjectId();
+    shopIds.push(id);
+    return Shop.create({ _id: id, name: `Acceptance ${label}`, email: `acceptance-${runId}-${label}@example.test`, password,
     address: 'Fictional demo street', phoneNumber: 1000000000, zipCode: 10000,
     avatar: { public_id: 'demo', url: 'https://example.test/demo.svg' } });
+  };
   sellerA = await make('a'); sellerB = await make('b');
-  coupon = await Coupon.create({ name: 'GUARDIAN_ACCEPTANCE', value: 10, shopId: String(sellerB._id) });
+  const couponId = new mongoose.Types.ObjectId();
+  couponIds.push(couponId);
+  coupon = await Coupon.create({ _id: couponId, name: `GUARDIAN_ACCEPTANCE_${runId}`,  value: 10, shopId: String(sellerB._id) });
 });
 async function login(seller) {
   const response = await fetch(`${base}/shop/login-shop`, { method: 'POST', headers: { 'content-type': 'application/json' },

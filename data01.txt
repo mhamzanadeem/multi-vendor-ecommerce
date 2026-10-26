@@ -1,0 +1,12 @@
+Shop Name
+Tech Haven Store
+Phone Number
+923001234567
+Email address
+contact@techhaven.com
+Address
+221B Main Boulevard, Islamabad, Pakistan
+Zip Code
+44000
+Password
+Shop01

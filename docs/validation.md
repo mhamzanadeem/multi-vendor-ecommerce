@@ -40,3 +40,11 @@ terminal after reviewing changes. This stages only implementation files and
 excludes the pre-existing login edit, data01.txt, vercel.json and real environment
 files. The script stops on errors and never force-pushes. Reimport only after the
 GitHub commit is visible.
+
+## Existing Atlas database support
+
+User authorized multi-vendor-ecommerce. Guard now accepts that exact name; fixtures
+use unique run IDs and cleanup deletes only IDs created by that execution.
+Schema auto-index creation is disabled. Three unit/readiness checks passed after
+this update. Atlas connectivity was not attempted with private credentials. CI
+now reads TEST_DB_URL from project variables instead of a local MongoDB service.

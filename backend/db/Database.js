@@ -1,3 +1,10 @@
+const dns = require("node:dns");
+// Preserve the Atlas DNS workaround used by this application. Override with a
+// comma-separated list, or 'system' when the environment's resolver supports SRV.
+const dnsServers = process.env.DNS_SERVERS || "1.1.1.1,8.8.8.8";
+if (dnsServers !== "system") {
+  dns.setServers(dnsServers.split(",").map(server => server.trim()).filter(Boolean));
+}
 const mongoose = require("mongoose");
 
 let cached = global._mongoose;

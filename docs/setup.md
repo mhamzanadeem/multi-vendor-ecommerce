@@ -43,9 +43,12 @@ npm.cmd test
 npm.cmd run build --prefix frontend
 ```
 
-Tests refuse other database names. Use dedicated credentials and do not run suites
-concurrently against the same database. The integration suite starts the real app,
-uses real seller password login and cookies, and cleans only its named fixtures.
+Tests accept guardian_test or the user-authorized multi-vendor-ecommerce database.
+For Atlas, set TEST_DB_URL to the existing URI including /multi-vendor-ecommerce.
+CI reads this from the masked project variable; no MongoDB service is started.
+Use only the authorized nonproduction database. The integration suite starts the real app,
+uses real seller password login and cookies, and uses unique per-run names and cleans only document IDs created by that run.
+Automatic index creation is disabled for acceptance tests.
 It calls no payment, email or image APIs. Missing database access is infrastructure
 failure, not proof of the coupon vulnerability.
 

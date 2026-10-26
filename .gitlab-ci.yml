@@ -11,11 +11,7 @@ workflow:
 
 acceptance:
   stage: verify
-  services:
-    - name: mongo:7
-      alias: mongo
-  variables:
-    TEST_DB_URL: mongodb://mongo:27017/guardian_test
+  # TEST_DB_URL comes from the masked project CI/CD variable (Atlas).
   script:
     - npm ci
     - mkdir -p reports
